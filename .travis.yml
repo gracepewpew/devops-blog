@@ -1,20 +1,13 @@
 language: go
 go:
-  - 1.11.x
-
-before_install:
-  # Initialize Go module (if not already done)
-  - go mod init your-module-name || echo "Go module already initialized."
+  - 1.21.x
 
 install:
-  # Install Hugo (assuming you have go.mod now)
-  - go get github.com/gohugoio/hugo
+  - go install github.com/gohugoio/hugo@latest
 
 script:
-  # Create the theme directory and clone the beautifulhugo theme
-  - mkdir -p themes/beautifulhugo && git clone https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
-  # Run Hugo with the specified theme
-  - hugo --theme=beautifulhugo
+  - mkdir -p themes/beautifulhugo && git clone https://GitHub.com/halogenica/beautifulhugo.git themes/beautifulhugo
+  - hugo --theme beautifulhugo
 
 deploy:
   provider: pages
@@ -23,3 +16,6 @@ deploy:
   local_dir: public
   on:
     branch: master
+    env:
+  global:
+    - GITHUB_TOKEN=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
