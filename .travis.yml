@@ -3,16 +3,24 @@ go:
   - 1.11.x
 
 install:
-  - go get GitHub.com/gohugoio/hugo
+  # Change the import path to use the correct Go format (ensure it is an actual importable package)
+  - go get github.com/gohugoio/hugo
 
 script:
-  - mkdir -p themes/beautifulhugo && git clone https://GitHub.com/halogenica/beautifulhugo.git themes/beautifulhugo
-  - hugo --theme beautifulhugo
+  # Create the theme directory and clone the beautifulhugo theme
+  - mkdir -p themes/beautifulhugo && git clone https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+  # Run Hugo with the specified theme
+  - hugo --theme=beautifulhugo
 
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $travis-devops-blog
+  github_token: $GITHUB_TOKEN
   local_dir: public
   on:
     branch: master
+
+env:
+  global:
+    # It's recommended to set this securely in Travis CI's web interface rather than in the file
+    - secure: "your_secure_encrypted_token_here"  # Use an encrypted token instead
