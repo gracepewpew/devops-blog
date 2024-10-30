@@ -2,6 +2,7 @@
 title: Scaling My Kubernetes Deployment
 date: 2019-02-02
 tags: ["kubernetes", "code"]
+draft: false
 ---
 Copyright © 2019. Packt Publishing, Limited. All rights reserved.
 Scaling my Kubernetes deployment
