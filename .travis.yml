@@ -2,8 +2,12 @@ language: go
 go:
   - 1.11.x
 
+before_install:
+  # Initialize Go module (if not already done)
+  - go mod init your-module-name || echo "Go module already initialized."
+
 install:
-  # Change the import path to use the correct Go format (ensure it is an actual importable package)
+  # Install Hugo (assuming you have go.mod now)
   - go get github.com/gohugoio/hugo
 
 script:
@@ -19,8 +23,3 @@ deploy:
   local_dir: public
   on:
     branch: master
-
-env:
-  global:
-    # It's recommended to set this securely in Travis CI's web interface rather than in the file
-    - secure: "your_secure_encrypted_token_here"  # Use an encrypted token instead
